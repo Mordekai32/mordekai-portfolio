@@ -7,7 +7,7 @@ import Projects from './pages/Projects';
 import ExploreGrid from './pages/ExploreGrid';
 import Contact from './pages/Contact';
 import HireMe from './pages/HireMe';
-// import CV from './pages/CV';
+import ResumePage from './pages/ResumePage'; // <-- Import the Resume page
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/explore-grid" element={<ExploreGrid />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/hire-me" element={<HireMe />} />
-          {/* <Route path="/cv" element={<CV />} /> */}
+          <Route path="/resume" element={<ResumePage />} /> {/* Active route */}
         </Routes>
       </main>
       <Footer />
