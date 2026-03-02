@@ -1,7 +1,35 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SkillBadge from '../components/SkillBadge';
 import profileImage from '../assets/a.jpg';
+
+// SkillBadge Component
+function SkillBadge({ children, icon }) {
+  return (
+    <div
+      className="px-4 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition-all duration-300 cursor-pointer"
+      style={{
+        backgroundColor: 'rgba(79,70,229,0.15)',
+        color: '#4F46E5',
+        border: '1px solid rgba(79,70,229,0.3)',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.25)';
+        e.currentTarget.style.borderColor = '#4F46E5';
+        e.currentTarget.style.boxShadow = '0 4px 15px rgba(79,70,229,0.2)';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = 'rgba(79,70,229,0.15)';
+        e.currentTarget.style.borderColor = 'rgba(79,70,229,0.3)';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      {icon && <span className="text-lg">{icon}</span>}
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   const [displayName, setDisplayName] = useState('');
@@ -103,13 +131,13 @@ export default function Home() {
         </p>
 
         {/* Skill badges */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          <SkillBadge>React &amp; Next.js</SkillBadge>
-          <SkillBadge>Smart Contracts (Solidity)</SkillBadge>
-          <SkillBadge>Node.js</SkillBadge>
-          <SkillBadge>PostgreSQL</SkillBadge>
-          <SkillBadge>AWS Cloud</SkillBadge>
-          <SkillBadge>Tailwind CSS</SkillBadge>
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
+          <SkillBadge icon="⚛️">React & Next.js</SkillBadge>
+          <SkillBadge icon="🔗">Smart Contracts</SkillBadge>
+          <SkillBadge icon="💚">Node.js</SkillBadge>
+          <SkillBadge icon="🗄️">PostgreSQL</SkillBadge>
+          <SkillBadge icon="☁️">AWS Cloud</SkillBadge>
+          <SkillBadge icon="🎨">Tailwind CSS</SkillBadge>
         </div>
 
         {/* CTA Buttons */}
