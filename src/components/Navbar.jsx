@@ -254,7 +254,11 @@ Available upon request`;
                   UKOBUKEYE
                 </span>
                 <span className="text-xs font-light tracking-widest text-pink-500/60 uppercase transition-colors duration-300 group-hover:text-pink-400 font-mono">
+<<<<<<< HEAD
                   M.Mordekai • Innovative Developer
+=======
+                  Mordekai • Innovative Developer
+>>>>>>> a322cec (Commit ya kabiri: ongeraho features nshya)
                 </span>
               </div>
               <div className="absolute -inset-3 bg-gradient-to-r from-sky-600/0 via-sky-500/0 to-cyan-600/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />

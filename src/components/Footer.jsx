@@ -238,4 +238,8 @@ export default function Footer() {
       </div>
     </footer>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a322cec (Commit ya kabiri: ongeraho features nshya)
