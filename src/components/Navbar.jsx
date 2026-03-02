@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
@@ -8,6 +8,52 @@ export default function Navbar() {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const navbarRef = useRef(null);
+
+  // CV data (yakuwe muri PDF)
+  const cvText = `UKOBUKEYE Mordekai
+
+Profile
+Innovative and motivated software developer with strong experience in web development, AI, IoT, and blockchain technologies. Skilled at creating interactive web applications and smart solutions for agriculture, energy, waste management, and marketplaces. Strong problem- solving, teamwork, and project management skills.
+
+Skills
+Frontend: React, Redux, TailwindCSS, Material- UI, SCSS
+Backend: Node.js, Express, Python
+Database: MongoDB, PostgreSQL
+Other Technologies: Smart Contracts, IoT, AI, Chart.js, Recharts, Leaflet, Elasticsearch, Auth0
+Tools: Git, GitHub, VS Code
+
+Education
+Saint Laurent Gaseke TSS - Senior 6 / Level 5, Rwanda
+
+Projects
+- AgriConnect Rwanda - Digital marketplace connecting Rwandan farmers with buyers to reduce post- harvest losses. Tech: React, Node.js, MongoDB, Mobile
+- Solar P2P Network - Peer- to- peer energy trading system allowing households to sell excess solar power. Tech: React, Smart Contracts, IoT, Real- time Trading
+- Smart Waste AI – AI route optimization for garbage collection based on fill levels and traffic. Tech: AI, Node.js
+- Crowd Predictor – Predicting bus occupancy rates using historical data for commuters. Tech: Python, API
+- School Management System – Comprehensive platform to manage students, teachers, attendance, and grades. Tech: React, Express, PostgreSQL, Tailwind
+- Job Finder Website – Smart job board with AI-powered recommendations and one-click applications. Tech: React, Elasticsearch, Node.js, Auth0
+- Movie App – Browse trending movies, view details, and save favorites using TMDB API. Tech: React, Redux, TMDB API, SCSS
+- Weather App Advanced – Hyper-local weather forecasts with interactive maps, hourly graphs, and severe weather alerts. Tech: React, Chart.js, OpenWeatherMap, Leaflet
+- Ecommerce Admin Dashboard – Dashboard to manage products, orders, customers, and sales analytics. Tech: React, Material-UI, Recharts
+
+Languages
+- Kinyarwanda: Fluent
+- English: Fluent
+
+References
+Available upon request`;
+
+  const downloadCV = () => {
+    const blob = new Blob([cvText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'UKOBUKEYE_Mordekai_CV.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +81,7 @@ export default function Navbar() {
     { label: 'Home', path: '/', end: true },
     { label: 'About', path: '/about' },
     { label: 'Projects', path: '/projects' },
+    { label: 'Resume', path: '/resume' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -175,6 +222,7 @@ export default function Navbar() {
         .mobile-nav-item:nth-child(3) { animation-delay: 0.15s; }
         .mobile-nav-item:nth-child(4) { animation-delay: 0.2s; }
         .mobile-nav-item:nth-child(5) { animation-delay: 0.25s; }
+        .mobile-nav-item:nth-child(6) { animation-delay: 0.3s; }
       `}</style>
 
       <nav
@@ -206,7 +254,7 @@ export default function Navbar() {
                   UKOBUKEYE
                 </span>
                 <span className="text-xs font-light tracking-widest text-pink-500/60 uppercase transition-colors duration-300 group-hover:text-pink-400 font-mono">
-                  Mordekai
+                  M.Mordekai • Innovative Developer
                 </span>
               </div>
               <div className="absolute -inset-3 bg-gradient-to-r from-sky-600/0 via-sky-500/0 to-cyan-600/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
@@ -230,8 +278,20 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTA Button */}
-            <div className="hidden md:block">
+            {/* Desktop CTA Buttons */}
+            <div className="hidden md:flex items-center gap-3">
+              {/* Download CV Button */}
+              <button
+                onClick={downloadCV}
+                className="relative p-2.5 text-slate-300 hover:text-cyan-400 transition-colors group"
+                aria-label="Download CV"
+                title="Download CV"
+              >
+                <Download size={20} strokeWidth={2} />
+                <span className="absolute inset-0 rounded-full bg-cyan-400/0 group-hover:bg-cyan-400/10 transition-colors duration-300" />
+              </button>
+
+              {/* Hire Me Button */}
               <Link
                 to="/hire-me"
                 className="cta-button relative px-7 py-2.5 text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 group"
@@ -279,10 +339,21 @@ export default function Navbar() {
                     {item.label}
                   </NavLink>
                 ))}
+                {/* Mobile Download CV button */}
+                <button
+                  onClick={() => {
+                    downloadCV();
+                    setIsOpen(false);
+                  }}
+                  className="mobile-nav-item flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-800/50 text-slate-200 text-sm font-semibold rounded-lg hover:bg-slate-700/50 transition-all duration-300"
+                >
+                  <Download size={18} />
+                  Download CV
+                </button>
                 <Link
                   to="/hire-me"
                   onClick={() => setIsOpen(false)}
-                  className="mobile-nav-item block w-full mt-4 px-4 py-3 bg-gradient-to-r from-pink-500 to-cyan-400 text-white text-sm font-semibold rounded-lg text-center hover:from-pink-600 hover:to-cyan-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-pink-500/30"
+                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-cyan-400 text-white text-sm font-semibold rounded-lg text-center hover:from-pink-600 hover:to-cyan-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-pink-500/30"
                 >
                   Hire Me
                 </Link>
