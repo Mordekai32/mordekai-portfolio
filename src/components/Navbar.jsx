@@ -91,14 +91,13 @@ Available upon request`;
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700&display=swap');
 
         :root {
-          --primary: #3b82f6;        /* blue-500 – main brand color, accessible on dark */
-          --primary-light: #60a5fa;   /* blue-400 */
-          --accent: #f59e0b;           /* amber-500 – accent for hover & highlights */
-          --secondary: #8b5cf6;        /* violet-500 – secondary accent */
-          --background: #0f172a;        /* slate-900 – deep, neutral dark */
-          --surface: #1e293b;           /* slate-800 – subtle contrast for cards */
-          --text-primary: #f8fafc;      /* slate-50 – high contrast text */
-          --text-secondary: #94a3b8;    /* slate-400 – lower emphasis text */
+          --primary: #FF6B35;        /* orange accent */
+          --primary-light: #FF8C5A;   /* lighter orange */
+          --accent: #FF6B35;           /* same orange for consistency */
+          --background: #1F3B6F;       /* dark blue navbar */
+          --surface: #2A4A8A;          /* slightly lighter blue for mobile items */
+          --text-primary: #FFFFFF;      /* white */
+          --text-secondary: rgba(255,255,255,0.7); /* off-white for subtle text */
         }
 
         @keyframes shimmer {
@@ -147,6 +146,7 @@ Available upon request`;
         .nav-link {
           font-family: 'Space Mono', monospace;
           position: relative;
+          color: var(--text-primary);
         }
 
         .nav-link::after {
@@ -156,7 +156,7 @@ Available upon request`;
           left: 0;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, var(--primary), var(--accent));
+          background: var(--primary);
           transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -164,9 +164,15 @@ Available upon request`;
           width: 100%;
         }
 
+        .nav-link.active {
+          color: var(--primary);
+          font-weight: 600;
+        }
+
         .nav-link.active::after {
           width: 100%;
           opacity: 1;
+          background: var(--primary);
         }
 
         @media (max-width: 768px) {
@@ -180,13 +186,14 @@ Available upon request`;
           font-family: 'Syne', sans-serif;
           font-weight: 600;
           letter-spacing: 0.5px;
+          color: white;
         }
 
         .cta-button::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, var(--primary), var(--accent));
+          background: var(--primary);
           border-radius: 50px;
           z-index: -1;
           opacity: 0;
@@ -201,7 +208,7 @@ Available upon request`;
           content: '';
           position: absolute;
           inset: -2px;
-          background: linear-gradient(135deg, var(--primary), var(--accent));
+          background: var(--primary);
           border-radius: 50px;
           z-index: -2;
           opacity: 0;
@@ -215,6 +222,18 @@ Available upon request`;
 
         .mobile-nav-item {
           animation: slide-down 0.3s ease forwards;
+          color: var(--text-primary);
+        }
+
+        .mobile-nav-item:hover {
+          color: var(--primary);
+          background: rgba(255,107,53,0.1);
+        }
+
+        .mobile-nav-item.active {
+          background: rgba(255,107,53,0.2);
+          color: var(--primary);
+          border-left: 2px solid var(--primary);
         }
 
         .mobile-nav-item:nth-child(1) { animation-delay: 0.05s; }
@@ -229,20 +248,21 @@ Available upon request`;
         ref={navbarRef}
         className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
           scrolled
-            ? 'bg-slate-950/90 backdrop-blur-xl border-slate-700/40 shadow-2xl'
-            : 'bg-slate-950/50 backdrop-blur-md border-slate-800/30'
+            ? 'bg-[#1F3B6F]/90 backdrop-blur-xl border-white/20 shadow-2xl'
+            : 'bg-[#1F3B6F]/50 backdrop-blur-md border-white/10'
         }`}
+        style={{ backgroundColor: scrolled ? 'rgba(31,59,111,0.9)' : 'rgba(31,59,111,0.5)' }}
       >
         {/* Animated background gradient */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div 
-            className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-500/15 rounded-full mix-blend-screen blur-3xl"
+            className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#FF6B35]/15 rounded-full mix-blend-screen blur-3xl"
             style={{
               transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
               transition: 'transform 0.3s ease-out',
             }}
           />
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-amber-400/10 rounded-full mix-blend-screen blur-3xl animate-pulse" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#FF6B35]/10 rounded-full mix-blend-screen blur-3xl animate-pulse" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
@@ -250,14 +270,14 @@ Available upon request`;
             {/* Logo */}
             <Link to="/" className="group relative">
               <div className="flex flex-col gap-0.5">
-                <span className="logo-text text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-amber-400 transition-all duration-300 group-hover:from-blue-300 group-hover:via-blue-400 group-hover:to-amber-300">
+                <span className="logo-text text-2xl tracking-tighter text-white">
                   UKOBUKEYE
                 </span>
-                <span className="text-xs font-light tracking-widest text-blue-500/60 uppercase transition-colors duration-300 group-hover:text-blue-400 font-mono">
+                <span className="text-xs font-light tracking-widest text-white/60 uppercase transition-colors duration-300 group-hover:text-[#FF6B35] font-mono">
                   Mordekai • Innovative Developer
                 </span>
               </div>
-              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/0 via-blue-500/0 to-amber-600/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
+              <div className="absolute -inset-3 bg-gradient-to-r from-[#FF6B35]/0 via-[#FF6B35]/0 to-[#FF6B35]/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -269,7 +289,7 @@ Available upon request`;
                   end={item.end}
                   className={({ isActive }) =>
                     `nav-link text-sm tracking-wide transition-colors duration-300 ${
-                      isActive ? 'text-blue-400 font-semibold' : 'text-slate-300 hover:text-amber-400'
+                      isActive ? 'active' : 'hover:text-[#FF6B35]'
                     }`
                   }
                 >
@@ -283,18 +303,18 @@ Available upon request`;
               {/* Download CV Button */}
               <button
                 onClick={downloadCV}
-                className="relative p-2.5 text-slate-300 hover:text-amber-400 transition-colors group"
+                className="relative p-2.5 text-white hover:text-[#FF6B35] transition-colors group"
                 aria-label="Download CV"
                 title="Download CV"
               >
                 <Download size={20} strokeWidth={2} />
-                <span className="absolute inset-0 rounded-full bg-amber-400/0 group-hover:bg-amber-400/10 transition-colors duration-300" />
+                <span className="absolute inset-0 rounded-full bg-[#FF6B35]/0 group-hover:bg-[#FF6B35]/10 transition-colors duration-300" />
               </button>
 
               {/* Hire Me Button */}
               <Link
                 to="/hire-me"
-                className="cta-button relative px-7 py-2.5 text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 group"
+                className="cta-button relative px-7 py-2.5 text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 group border border-white/30 hover:border-transparent"
               >
                 <span className="relative z-10 inline-block">
                   Hire Me
@@ -306,7 +326,7 @@ Available upon request`;
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden relative z-20 p-2 text-blue-400 hover:text-amber-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              className="md:hidden relative z-20 p-2 text-white hover:text-[#FF6B35] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -320,7 +340,7 @@ Available upon request`;
 
           {/* Mobile Navigation */}
           {isOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-t border-slate-700/40">
+            <div className="md:hidden absolute top-full left-0 right-0 bg-[#1F3B6F]/95 backdrop-blur-xl border-t border-white/20">
               <div className="px-6 py-6 space-y-2">
                 {navItems.map((item) => (
                   <NavLink
@@ -330,9 +350,7 @@ Available upon request`;
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
                       `mobile-nav-item block px-4 py-3 rounded-lg font-mono text-sm transition-all duration-300 ${
-                        isActive
-                          ? 'bg-blue-500/20 text-blue-400 border-l-2 border-blue-400 pl-3'
-                          : 'text-slate-300 hover:bg-blue-500/10 hover:text-amber-400'
+                        isActive ? 'active' : ''
                       }`
                     }
                   >
@@ -345,7 +363,7 @@ Available upon request`;
                     downloadCV();
                     setIsOpen(false);
                   }}
-                  className="mobile-nav-item flex items-center justify-center w-full gap-2 px-4 py-3 bg-slate-800/50 text-slate-200 text-sm font-semibold rounded-lg hover:bg-slate-700/50 transition-all duration-300"
+                  className="mobile-nav-item flex items-center justify-center w-full gap-2 px-4 py-3 bg-white/10 text-white text-sm font-semibold rounded-lg hover:bg-[#FF6B35]/20 transition-all duration-300"
                 >
                   <Download size={18} />
                   Download CV
@@ -353,7 +371,7 @@ Available upon request`;
                 <Link
                   to="/hire-me"
                   onClick={() => setIsOpen(false)}
-                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white text-sm font-semibold rounded-lg text-center hover:from-blue-600 hover:to-amber-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/30"
+                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-[#FF6B35] text-white text-sm font-semibold rounded-lg text-center hover:bg-[#FF8C5A] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#FF6B35]/30"
                 >
                   Hire Me
                 </Link>
