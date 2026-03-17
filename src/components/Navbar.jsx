@@ -91,14 +91,14 @@ Available upon request`;
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700&display=swap');
 
         :root {
-          --primary: #ff006e;
-          --primary-light: #ff1493;
-          --accent: #00f5ff;
-          --secondary: #8338ec;
-          --background: #0a0e27;
-          --surface: #16213e;
-          --text-primary: #ffffff;
-          --text-secondary: #b0b8d4;
+          --primary: #3b82f6;        /* blue-500 – main brand color, accessible on dark */
+          --primary-light: #60a5fa;   /* blue-400 */
+          --accent: #f59e0b;           /* amber-500 – accent for hover & highlights */
+          --secondary: #8b5cf6;        /* violet-500 – secondary accent */
+          --background: #0f172a;        /* slate-900 – deep, neutral dark */
+          --surface: #1e293b;           /* slate-800 – subtle contrast for cards */
+          --text-primary: #f8fafc;      /* slate-50 – high contrast text */
+          --text-secondary: #94a3b8;    /* slate-400 – lower emphasis text */
         }
 
         @keyframes shimmer {
@@ -186,7 +186,7 @@ Available upon request`;
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, #ff006e, #00f5ff);
+          background: linear-gradient(135deg, var(--primary), var(--accent));
           border-radius: 50px;
           z-index: -1;
           opacity: 0;
@@ -201,7 +201,7 @@ Available upon request`;
           content: '';
           position: absolute;
           inset: -2px;
-          background: linear-gradient(135deg, #ff006e, #00f5ff);
+          background: linear-gradient(135deg, var(--primary), var(--accent));
           border-radius: 50px;
           z-index: -2;
           opacity: 0;
@@ -236,13 +236,13 @@ Available upon request`;
         {/* Animated background gradient */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div 
-            className="absolute top-1/2 left-1/4 w-96 h-96 bg-pink-500/15 rounded-full mix-blend-screen blur-3xl"
+            className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-500/15 rounded-full mix-blend-screen blur-3xl"
             style={{
               transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
               transition: 'transform 0.3s ease-out',
             }}
           />
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-400/10 rounded-full mix-blend-screen blur-3xl animate-pulse" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-amber-400/10 rounded-full mix-blend-screen blur-3xl animate-pulse" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
@@ -250,14 +250,14 @@ Available upon request`;
             {/* Logo */}
             <Link to="/" className="group relative">
               <div className="flex flex-col gap-0.5">
-                <span className="logo-text text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-pink-500 to-cyan-400 transition-all duration-300 group-hover:from-pink-300 group-hover:via-pink-400 group-hover:to-cyan-300">
+                <span className="logo-text text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-amber-400 transition-all duration-300 group-hover:from-blue-300 group-hover:via-blue-400 group-hover:to-amber-300">
                   UKOBUKEYE
                 </span>
-                <span className="text-xs font-light tracking-widest text-pink-500/60 uppercase transition-colors duration-300 group-hover:text-pink-400 font-mono">
+                <span className="text-xs font-light tracking-widest text-blue-500/60 uppercase transition-colors duration-300 group-hover:text-blue-400 font-mono">
                   Mordekai • Innovative Developer
                 </span>
               </div>
-              <div className="absolute -inset-3 bg-gradient-to-r from-sky-600/0 via-sky-500/0 to-cyan-600/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
+              <div className="absolute -inset-3 bg-gradient-to-r from-blue-600/0 via-blue-500/0 to-amber-600/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -269,7 +269,7 @@ Available upon request`;
                   end={item.end}
                   className={({ isActive }) =>
                     `nav-link text-sm tracking-wide transition-colors duration-300 ${
-                      isActive ? 'text-pink-400 font-semibold' : 'text-slate-300 hover:text-cyan-400'
+                      isActive ? 'text-blue-400 font-semibold' : 'text-slate-300 hover:text-amber-400'
                     }`
                   }
                 >
@@ -283,12 +283,12 @@ Available upon request`;
               {/* Download CV Button */}
               <button
                 onClick={downloadCV}
-                className="relative p-2.5 text-slate-300 hover:text-cyan-400 transition-colors group"
+                className="relative p-2.5 text-slate-300 hover:text-amber-400 transition-colors group"
                 aria-label="Download CV"
                 title="Download CV"
               >
                 <Download size={20} strokeWidth={2} />
-                <span className="absolute inset-0 rounded-full bg-cyan-400/0 group-hover:bg-cyan-400/10 transition-colors duration-300" />
+                <span className="absolute inset-0 rounded-full bg-amber-400/0 group-hover:bg-amber-400/10 transition-colors duration-300" />
               </button>
 
               {/* Hire Me Button */}
@@ -306,7 +306,7 @@ Available upon request`;
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden relative z-20 p-2 text-pink-400 hover:text-cyan-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500"
+              className="md:hidden relative z-20 p-2 text-blue-400 hover:text-amber-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
@@ -331,8 +331,8 @@ Available upon request`;
                     className={({ isActive }) =>
                       `mobile-nav-item block px-4 py-3 rounded-lg font-mono text-sm transition-all duration-300 ${
                         isActive
-                          ? 'bg-pink-500/20 text-pink-400 border-l-2 border-pink-400 pl-3'
-                          : 'text-slate-300 hover:bg-pink-500/10 hover:text-cyan-400'
+                          ? 'bg-blue-500/20 text-blue-400 border-l-2 border-blue-400 pl-3'
+                          : 'text-slate-300 hover:bg-blue-500/10 hover:text-amber-400'
                       }`
                     }
                   >
@@ -353,7 +353,7 @@ Available upon request`;
                 <Link
                   to="/hire-me"
                   onClick={() => setIsOpen(false)}
-                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-cyan-400 text-white text-sm font-semibold rounded-lg text-center hover:from-pink-600 hover:to-cyan-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-pink-500/30"
+                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-amber-500 text-white text-sm font-semibold rounded-lg text-center hover:from-blue-600 hover:to-amber-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/30"
                 >
                   Hire Me
                 </Link>
