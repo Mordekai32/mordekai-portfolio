@@ -8,7 +8,7 @@ export const cvData = {
     other: "Smart Contracts, IoT, AI, Chart.js, Recharts, Leaflet, Elasticsearch, Auth0",
     tools: "Git, GitHub, VS Code"
   },
-  education: "Saint Laurent Gaseke TSS - Senior 6 / Level 5, Rwanda",
+  education: "Upper Sixth (Senior 6) – Saint Laurent Gaseke TSS",
   projects: [
     "AgriConnect Rwanda - Digital marketplace connecting Rwandan farmers with buyers to reduce post-harvest losses. Tech: React, Node.js, MongoDB, Mobile",
     "Solar P2P Network - Peer-to-peer energy trading system allowing households to sell excess solar power. Tech: React, Smart Contracts, IoT, Real-time Trading",
