@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Download, Sparkles, ArrowRight, Palette } from 'lucide-react';
+import { Menu, X, Download, Sparkles, ArrowRight, Zap } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
@@ -11,66 +11,61 @@ export default function Navbar() {
   const [hireHovered, setHireHovered] = useState(false);
   const navbarRef = useRef(null);
 
-  // Enhanced CV data with rich formatting and beautiful ASCII art
-  const cvText = `✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
-🌈🌈🌈           UKOBUKEYE MORDEKAI - CREATIVE DEVELOPER           🌈🌈🌈
-✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+  // Enhanced CV with "Innovative Developer" branding
+  const cvText = `✨ INNOVATIVE DEVELOPER PORTFOLIO ✨
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎨 PROFILE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Innovative software developer with a passion for beautiful, 
-functional code. Expert in crafting delightful user experiences 
-with modern web technologies, AI, and blockchain. 
+⚡ UKOBUKEYE MORDEKAI ⚡
+   Innovative Software Developer | Creative Technologist
 
-🚀 SKILLS & EXPERTISE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Frontend Magic: React, Redux, TailwindCSS, Framer Motion, Three.js
-• Backend Alchemy: Node.js, Python, FastAPI, GraphQL
-• Data Sorcery: MongoDB, PostgreSQL, Firebase, Elasticsearch
-• Emerging Tech: Web3, Smart Contracts, IoT, TensorFlow.js
-• Creative Tools: Chart.js, D3, GSAP, WebGL
+📌 PROFILE
+─────────────────────────────────────────────────
+Passionate about pushing boundaries with modern web technologies,
+AI, and blockchain. Building solutions that combine elegance,
+performance, and real-world impact.
 
-💼 FEATURED PROJECTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌾 AgriConnect Rwanda     → Digital marketplace for farmers
-⚡ Solar P2P Network       → Blockchain energy trading
-♻️ Smart Waste AI         → AI-powered route optimization
-🚌 Crowd Predictor        → ML bus occupancy prediction
-🏫 School Management      → Complete admin platform
-🎬 Movie App              → TMDB cinema experience
-🌤️ Weather Advanced       → Hyperlocal forecasting
-📊 Admin Dashboard        → Analytics & business intelligence
+🛠️ TECH STACK
+─────────────────────────────────────────────────
+Frontend: React, Next.js, TailwindCSS, Three.js, Framer Motion
+Backend: Node.js, Python, FastAPI, GraphQL
+Database: MongoDB, PostgreSQL, Firebase
+Innovation: Web3, Smart Contracts, IoT, TensorFlow.js
+Tools: Git, Docker, AWS, Vercel
 
-🎓 EDUCATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Saint Laurent Gaseke TSS - Senior 6 | Advanced Computer Science
+🚀 INNOVATIVE PROJECTS
+─────────────────────────────────────────────────
+• AgriConnect Rwanda – AI-powered farming marketplace
+• Solar P2P Network – Blockchain energy trading platform
+• Smart Waste AI – IoT + ML waste management
+• Crowd Predictor – Predictive analytics for public transit
+• School Management System – Full-stack admin platform
+• Job Finder AI – Intelligent job matching engine
+
+🎓 EDUCATION & CERTIFICATIONS
+─────────────────────────────────────────────────
+Saint Laurent Gaseke TSS – Advanced CS
+• React Mastery
+• Blockchain Developer
+• AI Specialist
 
 🌐 LANGUAGES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Kinyarwanda (Native) • English (Fluent) • French (Intermediate)
+─────────────────────────────────────────────────
+Kinyarwanda (Native) | English (Fluent) | French (Intermediate)
 
-🏆 CERTIFICATIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• React Mastery & Advanced Patterns
-• Blockchain Developer Certification
-• AI & Machine Learning Specialization
-• UI/UX Design Principles
+📫 LET'S CONNECT
+─────────────────────────────────────────────────
+Email: mordekai@innovative.dev | GitHub: @mordekai
+Portfolio: mordekai.dev
 
-📫 CONTACT & REFERENCES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Email: mordekai@dev.me | GitHub: @mordekai | Portfolio: mordekai.dev
-References available upon request with 24h notice.
-
-✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
-“Code is poetry, design is emotion.” - Mordekai
-✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨`;
+“Innovation distinguishes between a leader and a follower.”
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
   const downloadCV = () => {
     const blob = new Blob(["\uFEFF" + cvText], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `Mordekai_Resume_${new Date().toISOString().split('T')[0]}.txt`;
+    link.download = `Mordekai_Innovative_Developer_CV.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -143,11 +138,6 @@ References available upon request with 24h notice.
           50% { transform: translateY(-20px) rotate(2deg); }
         }
 
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-
         @keyframes slideDown {
           from {
             opacity: 0;
@@ -162,6 +152,11 @@ References available upon request with 24h notice.
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+          0%, 100% { text-shadow: 0 0 4px rgba(255,107,107,0.5); }
+          50% { text-shadow: 0 0 12px rgba(255,107,107,0.8); }
         }
 
         .navbar {
@@ -186,10 +181,32 @@ References available upon request with 24h notice.
         }
 
         .logo-sub {
-          background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+          background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,107,107,0.7));
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+        }
+
+        .innovative-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background: rgba(255,107,107,0.15);
+          backdrop-filter: blur(4px);
+          padding: 2px 8px;
+          border-radius: 20px;
+          font-size: 0.65rem;
+          font-weight: 600;
+          color: #FF6B6B;
+          border: 1px solid rgba(255,107,107,0.3);
+          margin-left: 6px;
+          white-space: nowrap;
+        }
+
+        .innovative-badge span {
+          animation: pulseGlow 2s infinite;
         }
 
         .nav-link-item {
@@ -269,17 +286,15 @@ References available upon request with 24h notice.
           color: #FF6B6B;
         }
 
-        @keyframes ripple {
-          0% { transform: scale(0); opacity: 0.5; }
-          100% { transform: scale(4); opacity: 0; }
+        @keyframes spinOnce {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(180deg); }
         }
-
-        .hover-glow {
-          transition: all 0.3s;
+        .animate-spin-once {
+          animation: spinOnce 0.3s ease-out;
         }
-
-        .hover-glow:hover {
-          filter: drop-shadow(0 0 8px var(--accent-1));
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
         }
       `}</style>
 
@@ -326,12 +341,18 @@ References available upon request with 24h notice.
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Logo with vibrant gradient */}
+            {/* Logo with "Innovative Developer" badge */}
             <Link to="/" className="group relative">
               <div className="flex flex-col">
-                <span className="logo-gradient text-2xl sm:text-3xl font-black tracking-tighter">
-                  UKOBUKEYE
-                </span>
+                <div className="flex items-center flex-wrap gap-1">
+                  <span className="logo-gradient text-2xl sm:text-3xl font-black tracking-tighter">
+                    UKOBUKEYE
+                  </span>
+                  <div className="innovative-badge">
+                    <Zap size={12} />
+                    <span>Innovative Developer</span>
+                  </div>
+                </div>
                 <span className="logo-sub text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 group-hover:tracking-[0.4em]">
                   Mordekai • Creative Technologist
                 </span>
@@ -339,7 +360,7 @@ References available upon request with 24h notice.
               <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B6B]/0 via-[#FFE66D]/20 to-[#4ECDC4]/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl -z-10" />
             </Link>
 
-            {/* Desktop Navigation - vibrant colors */}
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1 lg:gap-2">
               {navItems.map((item) => (
                 <NavLink
@@ -365,7 +386,6 @@ References available upon request with 24h notice.
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-4">
-              {/* Download CV with tooltip */}
               <div className="relative">
                 <button
                   onClick={downloadCV}
@@ -378,12 +398,11 @@ References available upon request with 24h notice.
                 </button>
                 {downloadHovered && (
                   <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-[#1F1B24] text-white text-xs rounded-full whitespace-nowrap shadow-lg border border-[#FF6B6B]/30 backdrop-blur-sm">
-                    Download Resume
+                    Download Portfolio
                   </span>
                 )}
               </div>
 
-              {/* Hire Me CTA with gradient */}
               <Link
                 to="/hire-me"
                 onMouseEnter={() => setHireHovered(true)}
@@ -402,7 +421,7 @@ References available upon request with 24h notice.
               </Link>
             </div>
 
-            {/* Mobile Menu Button - vibrant pulse */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden relative z-20 p-2 text-white hover:text-[#FF6B6B] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B6B] rounded-xl bg-white/5 backdrop-blur-sm"
@@ -416,12 +435,12 @@ References available upon request with 24h notice.
             </button>
           </div>
 
-          {/* Mobile Navigation Menu - colorful & smooth */}
+          {/* Mobile Navigation */}
           {isOpen && (
             <div className="md:hidden absolute top-full left-0 right-0 pt-2 pb-4 px-2">
               <div className="mobile-menu p-2">
                 <div className="space-y-1">
-                  {navItems.map((item, idx) => (
+                  {navItems.map((item) => (
                     <NavLink
                       key={item.path}
                       to={item.path}
@@ -443,7 +462,6 @@ References available upon request with 24h notice.
                     </NavLink>
                   ))}
                   
-                  {/* Mobile Download CV */}
                   <button
                     onClick={() => {
                       downloadCV();
@@ -455,7 +473,6 @@ References available upon request with 24h notice.
                     Download CV
                   </button>
                   
-                  {/* Mobile Hire Me - gradient button */}
                   <Link
                     to="/hire-me"
                     onClick={() => setIsOpen(false)}
@@ -471,7 +488,6 @@ References available upon request with 24h notice.
         </div>
       </nav>
 
-      {/* Backdrop overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden animate-fadeIn"
@@ -479,19 +495,6 @@ References available upon request with 24h notice.
           style={{ top: navbarHeight }}
         />
       )}
-
-      <style>{`
-        @keyframes spin-once {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(180deg); }
-        }
-        .animate-spin-once {
-          animation: spin-once 0.3s ease-out;
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.2s ease-out;
-        }
-      `}</style>
     </>
   );
 }
