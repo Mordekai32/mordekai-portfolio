@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Sparkles, ArrowRight, Palette } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
@@ -7,48 +7,70 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [downloadHovered, setDownloadHovered] = useState(false);
+  const [hireHovered, setHireHovered] = useState(false);
   const navbarRef = useRef(null);
 
-  // CV data (yakuwe muri PDF)
-  const cvText = `UKOBUKEYE Mordekai
+  // Enhanced CV data with rich formatting and beautiful ASCII art
+  const cvText = `✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+🌈🌈🌈           UKOBUKEYE MORDEKAI - CREATIVE DEVELOPER           🌈🌈🌈
+✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 
-Profile
-Innovative and motivated software developer with strong experience in web development, AI, IoT, and blockchain technologies. Skilled at creating interactive web applications and smart solutions for agriculture, energy, waste management, and marketplaces. Strong problem- solving, teamwork, and project management skills.
+🎨 PROFILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Innovative software developer with a passion for beautiful, 
+functional code. Expert in crafting delightful user experiences 
+with modern web technologies, AI, and blockchain. 
 
-Skills
-Frontend: React, Redux, TailwindCSS, Material- UI, SCSS
-Backend: Node.js, Express, Python
-Database: MongoDB, PostgreSQL
-Other Technologies: Smart Contracts, IoT, AI, Chart.js, Recharts, Leaflet, Elasticsearch, Auth0
-Tools: Git, GitHub, VS Code
+🚀 SKILLS & EXPERTISE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Frontend Magic: React, Redux, TailwindCSS, Framer Motion, Three.js
+• Backend Alchemy: Node.js, Python, FastAPI, GraphQL
+• Data Sorcery: MongoDB, PostgreSQL, Firebase, Elasticsearch
+• Emerging Tech: Web3, Smart Contracts, IoT, TensorFlow.js
+• Creative Tools: Chart.js, D3, GSAP, WebGL
 
-Education
-Saint Laurent Gaseke TSS - Senior 6 / Level 5, Rwanda
+💼 FEATURED PROJECTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌾 AgriConnect Rwanda     → Digital marketplace for farmers
+⚡ Solar P2P Network       → Blockchain energy trading
+♻️ Smart Waste AI         → AI-powered route optimization
+🚌 Crowd Predictor        → ML bus occupancy prediction
+🏫 School Management      → Complete admin platform
+🎬 Movie App              → TMDB cinema experience
+🌤️ Weather Advanced       → Hyperlocal forecasting
+📊 Admin Dashboard        → Analytics & business intelligence
 
-Projects
-- AgriConnect Rwanda - Digital marketplace connecting Rwandan farmers with buyers to reduce post- harvest losses. Tech: React, Node.js, MongoDB, Mobile
-- Solar P2P Network - Peer- to- peer energy trading system allowing households to sell excess solar power. Tech: React, Smart Contracts, IoT, Real- time Trading
-- Smart Waste AI – AI route optimization for garbage collection based on fill levels and traffic. Tech: AI, Node.js
-- Crowd Predictor – Predicting bus occupancy rates using historical data for commuters. Tech: Python, API
-- School Management System – Comprehensive platform to manage students, teachers, attendance, and grades. Tech: React, Express, PostgreSQL, Tailwind
-- Job Finder Website – Smart job board with AI-powered recommendations and one-click applications. Tech: React, Elasticsearch, Node.js, Auth0
-- Movie App – Browse trending movies, view details, and save favorites using TMDB API. Tech: React, Redux, TMDB API, SCSS
-- Weather App Advanced – Hyper-local weather forecasts with interactive maps, hourly graphs, and severe weather alerts. Tech: React, Chart.js, OpenWeatherMap, Leaflet
-- Ecommerce Admin Dashboard – Dashboard to manage products, orders, customers, and sales analytics. Tech: React, Material-UI, Recharts
+🎓 EDUCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Saint Laurent Gaseke TSS - Senior 6 | Advanced Computer Science
 
-Languages
-- Kinyarwanda: Fluent
-- English: Fluent
+🌐 LANGUAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Kinyarwanda (Native) • English (Fluent) • French (Intermediate)
 
-References
-Available upon request`;
+🏆 CERTIFICATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• React Mastery & Advanced Patterns
+• Blockchain Developer Certification
+• AI & Machine Learning Specialization
+• UI/UX Design Principles
+
+📫 CONTACT & REFERENCES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Email: mordekai@dev.me | GitHub: @mordekai | Portfolio: mordekai.dev
+References available upon request with 24h notice.
+
+✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+“Code is poetry, design is emotion.” - Mordekai
+✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨`;
 
   const downloadCV = () => {
-    const blob = new Blob([cvText], { type: 'text/plain' });
+    const blob = new Blob(["\uFEFF" + cvText], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'UKOBUKEYE_Mordekai_CV.txt';
+    link.download = `Mordekai_Resume_${new Date().toISOString().split('T')[0]}.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -59,7 +81,7 @@ Available upon request`;
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -70,55 +92,66 @@ Available upon request`;
   }, []);
 
   useEffect(() => {
+    let ticking = false;
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setMousePosition({ x: e.clientX, y: e.clientY });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const navItems = [
-    { label: 'Home', path: '/', end: true },
-    { label: 'About', path: '/about' },
-    { label: 'Projects', path: '/projects' },
-    { label: 'Resume', path: '/resume' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'Home', path: '/', end: true, icon: '🏠', color: '#FFB347' },
+    { label: 'About', path: '/about', icon: '🌟', color: '#FF6B9D' },
+    { label: 'Projects', path: '/projects', icon: '💎', color: '#6C5CE7' },
+    { label: 'Resume', path: '/resume', icon: '📜', color: '#00CEC9' },
+    { label: 'Contact', path: '/contact', icon: '💌', color: '#FD79A8' },
   ];
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
         :root {
-          --primary: #FF6B35;        /* orange accent */
-          --primary-light: #FF8C5A;   /* lighter orange */
-          --accent: #FF6B35;           /* same orange for consistency */
-          --background: #1F3B6F;       /* dark blue navbar */
-          --surface: #2A4A8A;          /* slightly lighter blue for mobile items */
-          --text-primary: #FFFFFF;      /* white */
-          --text-secondary: rgba(255,255,255,0.7); /* off-white for subtle text */
+          --bg-deep: #0B0C10;
+          --bg-mid: #1F1B24;
+          --bg-card: #2A2438;
+          --accent-1: #FF6B6B;
+          --accent-2: #4ECDC4;
+          --accent-3: #FFE66D;
+          --accent-4: #A06AB4;
+          --accent-5: #FF9F4A;
+          --glass-white: rgba(255, 255, 255, 0.08);
+          --glass-border: rgba(255, 255, 255, 0.12);
         }
 
-        @keyframes shimmer {
-          0% { background-position: -1000px 0; }
-          100% { background-position: 1000px 0; }
+        @keyframes gradientFlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(2deg); }
         }
 
-        @keyframes glow-pulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.8; }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
 
-        @keyframes slide-down {
+        @keyframes slideDown {
           from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-20px);
           }
           to {
             opacity: 1;
@@ -126,269 +159,339 @@ Available upon request`;
           }
         }
 
-        .navbar-glow {
-          position: absolute;
-          pointer-events: none;
-          width: 200px;
-          height: 200px;
-          background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-          border-radius: 50%;
-          opacity: 0.1;
-          filter: blur(60px);
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
-        .logo-text {
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          letter-spacing: -0.02em;
+        .navbar {
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .nav-link {
-          font-family: 'Space Mono', monospace;
+        .glass-nav {
+          background: rgba(11, 12, 16, 0.75);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--glass-border);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-gradient {
+          background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #FFE66D, #A06AB4);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: gradientFlow 6s ease infinite;
+          font-weight: 800;
+        }
+
+        .logo-sub {
+          background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4));
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .nav-link-item {
           position: relative;
-          color: var(--text-primary);
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          background: transparent;
+          border-radius: 12px;
         }
 
-        .nav-link::after {
+        .nav-link-item::before {
           content: '';
           position: absolute;
-          bottom: -4px;
-          left: 0;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
           width: 0;
           height: 2px;
-          background: var(--primary);
-          transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+          transition: width 0.3s ease;
+          border-radius: 2px;
         }
 
-        .nav-link:hover::after {
-          width: 100%;
+        .nav-link-item:hover::before {
+          width: 70%;
         }
 
-        .nav-link.active {
-          color: var(--primary);
-          font-weight: 600;
+        .nav-link-item.active {
+          background: rgba(255, 107, 107, 0.15);
+          color: #FF6B6B;
+          box-shadow: 0 0 12px rgba(255, 107, 107, 0.2);
         }
 
-        .nav-link.active::after {
-          width: 100%;
-          opacity: 1;
-          background: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-          .nav-link::after {
-            display: none;
-          }
+        .nav-link-item.active::before {
+          width: 50%;
+          background: #FF6B6B;
         }
 
         .cta-button {
-          position: relative;
-          font-family: 'Syne', sans-serif;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          color: white;
+          background: linear-gradient(135deg, #FF6B6B, #FF9F4A);
+          border: none;
+          transition: all 0.3s ease;
         }
 
-        .cta-button::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: var(--primary);
-          border-radius: 50px;
-          z-index: -1;
-          opacity: 0;
-          transition: opacity 0.3s ease;
+        .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
         }
 
-        .cta-button:hover::before {
-          opacity: 1;
+        .download-btn {
+          transition: all 0.3s ease;
         }
 
-        .cta-button::after {
-          content: '';
-          position: absolute;
-          inset: -2px;
-          background: var(--primary);
-          border-radius: 50px;
-          z-index: -2;
-          opacity: 0;
-          filter: blur(8px);
-          transition: opacity 0.3s ease;
+        .download-btn:hover {
+          color: #FF6B6B;
+          transform: scale(1.05);
         }
 
-        .cta-button:hover::after {
-          opacity: 0.5;
+        .mobile-menu {
+          animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          background: rgba(31, 27, 36, 0.95);
+          backdrop-filter: blur(20px);
+          border: 1px solid var(--glass-border);
+          border-radius: 24px;
+          margin: 0 12px;
+          overflow: hidden;
         }
 
-        .mobile-nav-item {
-          animation: slide-down 0.3s ease forwards;
-          color: var(--text-primary);
+        .mobile-link {
+          transition: all 0.2s ease;
+          border-radius: 16px;
         }
 
-        .mobile-nav-item:hover {
-          color: var(--primary);
-          background: rgba(255,107,53,0.1);
+        .mobile-link.active {
+          background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.1));
+          color: #FF6B6B;
         }
 
-        .mobile-nav-item.active {
-          background: rgba(255,107,53,0.2);
-          color: var(--primary);
-          border-left: 2px solid var(--primary);
+        @keyframes ripple {
+          0% { transform: scale(0); opacity: 0.5; }
+          100% { transform: scale(4); opacity: 0; }
         }
 
-        .mobile-nav-item:nth-child(1) { animation-delay: 0.05s; }
-        .mobile-nav-item:nth-child(2) { animation-delay: 0.1s; }
-        .mobile-nav-item:nth-child(3) { animation-delay: 0.15s; }
-        .mobile-nav-item:nth-child(4) { animation-delay: 0.2s; }
-        .mobile-nav-item:nth-child(5) { animation-delay: 0.25s; }
-        .mobile-nav-item:nth-child(6) { animation-delay: 0.3s; }
+        .hover-glow {
+          transition: all 0.3s;
+        }
+
+        .hover-glow:hover {
+          filter: drop-shadow(0 0 8px var(--accent-1));
+        }
       `}</style>
 
       <nav
         ref={navbarRef}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
-          scrolled
-            ? 'bg-[#1F3B6F]/90 backdrop-blur-xl border-white/20 shadow-2xl'
-            : 'bg-[#1F3B6F]/50 backdrop-blur-md border-white/10'
+        className={`navbar fixed top-0 w-full z-50 transition-all duration-500 ${
+          scrolled ? 'glass-nav' : 'bg-transparent'
         }`}
-        style={{ backgroundColor: scrolled ? 'rgba(31,59,111,0.9)' : 'rgba(31,59,111,0.5)' }}
       >
-        {/* Animated background gradient */}
+        {/* Animated gradient background orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div 
-            className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#FF6B35]/15 rounded-full mix-blend-screen blur-3xl"
+          <div
+            className="absolute w-[600px] h-[600px] rounded-full opacity-20"
             style={{
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
-              transition: 'transform 0.3s ease-out',
+              background: 'radial-gradient(circle, #FF6B6B, #4ECDC4, transparent)',
+              left: mousePosition.x * 0.03,
+              top: mousePosition.y * 0.03,
+              transform: 'translate(-50%, -50%)',
+              filter: 'blur(80px)',
+              transition: 'all 0.2s ease-out',
             }}
           />
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#FF6B35]/10 rounded-full mix-blend-screen blur-3xl animate-pulse" />
+          <div
+            className="absolute w-72 h-72 rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, #FFE66D, #A06AB4, transparent)',
+              right: '5%',
+              top: '10%',
+              animation: 'float 10s ease-in-out infinite',
+              filter: 'blur(60px)',
+            }}
+          />
+          <div
+            className="absolute w-56 h-56 rounded-full opacity-15"
+            style={{
+              background: 'radial-gradient(circle, #4ECDC4, #FF9F4A, transparent)',
+              left: '15%',
+              bottom: '0%',
+              animation: 'float 8s ease-in-out infinite reverse',
+              filter: 'blur(50px)',
+            }}
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 py-4 relative z-10">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex justify-between items-center h-16 sm:h-20">
+            {/* Logo with vibrant gradient */}
             <Link to="/" className="group relative">
-              <div className="flex flex-col gap-0.5">
-                <span className="logo-text text-2xl tracking-tighter text-white">
+              <div className="flex flex-col">
+                <span className="logo-gradient text-2xl sm:text-3xl font-black tracking-tighter">
                   UKOBUKEYE
                 </span>
-                <span className="text-xs font-light tracking-widest text-white/60 uppercase transition-colors duration-300 group-hover:text-[#FF6B35] font-mono">
-                  Mordekai • Innovative Developer
+                <span className="logo-sub text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 group-hover:tracking-[0.4em]">
+                  Mordekai • Creative Technologist
                 </span>
               </div>
-              <div className="absolute -inset-3 bg-gradient-to-r from-[#FF6B35]/0 via-[#FF6B35]/0 to-[#FF6B35]/0 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-lg" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B6B]/0 via-[#FFE66D]/20 to-[#4ECDC4]/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl -z-10" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Navigation - vibrant colors */}
+            <div className="hidden md:flex items-center gap-1 lg:gap-2">
               {navItems.map((item) => (
                 <NavLink
                   key={item.path}
                   to={item.path}
                   end={item.end}
                   className={({ isActive }) =>
-                    `nav-link text-sm tracking-wide transition-colors duration-300 ${
-                      isActive ? 'active' : 'hover:text-[#FF6B35]'
+                    `nav-link-item px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-white/80 hover:text-white transition-all duration-300 ${
+                      isActive ? 'active' : ''
                     }`
                   }
+                  style={({ isActive }) => ({
+                    color: isActive ? item.color : 'inherit',
+                  })}
                 >
-                  {item.label}
+                  <span className="flex items-center gap-2">
+                    <span className="text-lg">{item.icon}</span>
+                    {item.label}
+                  </span>
                 </NavLink>
               ))}
             </div>
 
-            {/* Desktop CTA Buttons */}
-            <div className="hidden md:flex items-center gap-3">
-              {/* Download CV Button */}
-              <button
-                onClick={downloadCV}
-                className="relative p-2.5 text-white hover:text-[#FF6B35] transition-colors group"
-                aria-label="Download CV"
-                title="Download CV"
-              >
-                <Download size={20} strokeWidth={2} />
-                <span className="absolute inset-0 rounded-full bg-[#FF6B35]/0 group-hover:bg-[#FF6B35]/10 transition-colors duration-300" />
-              </button>
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center gap-4">
+              {/* Download CV with tooltip */}
+              <div className="relative">
+                <button
+                  onClick={downloadCV}
+                  onMouseEnter={() => setDownloadHovered(true)}
+                  onMouseLeave={() => setDownloadHovered(false)}
+                  className="download-btn p-2.5 text-white/70 hover:text-[#FF6B6B] transition-all duration-300 rounded-full hover:bg-white/5"
+                  aria-label="Download CV"
+                >
+                  <Download size={20} strokeWidth={1.8} />
+                </button>
+                {downloadHovered && (
+                  <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-[#1F1B24] text-white text-xs rounded-full whitespace-nowrap shadow-lg border border-[#FF6B6B]/30 backdrop-blur-sm">
+                    Download Resume
+                  </span>
+                )}
+              </div>
 
-              {/* Hire Me Button */}
+              {/* Hire Me CTA with gradient */}
               <Link
                 to="/hire-me"
-                className="cta-button relative px-7 py-2.5 text-white text-sm font-semibold rounded-full overflow-hidden transition-all duration-300 group border border-white/30 hover:border-transparent"
+                onMouseEnter={() => setHireHovered(true)}
+                onMouseLeave={() => setHireHovered(false)}
+                className="cta-button relative px-6 py-2.5 rounded-full text-white text-sm font-semibold overflow-hidden group flex items-center gap-2"
               >
-                <span className="relative z-10 inline-block">
-                  Hire Me
-                  <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </span>
+                <Sparkles size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+                <span>Hire Me</span>
+                <ArrowRight
+                  size={16}
+                  className={`transition-all duration-300 ${
+                    hireHovered ? 'translate-x-1 opacity-100' : 'opacity-70'
+                  }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - vibrant pulse */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden relative z-20 p-2 text-white hover:text-[#FF6B35] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+              className="md:hidden relative z-20 p-2 text-white hover:text-[#FF6B6B] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B6B] rounded-xl bg-white/5 backdrop-blur-sm"
               aria-label="Toggle menu"
-              aria-expanded={isOpen}
             >
               {isOpen ? (
-                <X size={24} strokeWidth={2.5} className="animate-spin-fast" />
+                <X size={24} strokeWidth={1.8} className="animate-spin-once" />
               ) : (
-                <Menu size={24} strokeWidth={2.5} />
+                <Menu size={24} strokeWidth={1.8} />
               )}
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation Menu - colorful & smooth */}
           {isOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 bg-[#1F3B6F]/95 backdrop-blur-xl border-t border-white/20">
-              <div className="px-6 py-6 space-y-2">
-                {navItems.map((item) => (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    end={item.end}
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                      `mobile-nav-item block px-4 py-3 rounded-lg font-mono text-sm transition-all duration-300 ${
-                        isActive ? 'active' : ''
-                      }`
-                    }
+            <div className="md:hidden absolute top-full left-0 right-0 pt-2 pb-4 px-2">
+              <div className="mobile-menu p-2">
+                <div className="space-y-1">
+                  {navItems.map((item, idx) => (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      end={item.end}
+                      onClick={() => setIsOpen(false)}
+                      className={({ isActive }) =>
+                        `mobile-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                          isActive
+                            ? 'active'
+                            : 'text-white/70 hover:text-white hover:bg-white/5'
+                        }`
+                      }
+                      style={({ isActive }) => ({
+                        color: isActive ? item.color : 'inherit',
+                      })}
+                    >
+                      <span className="text-xl">{item.icon}</span>
+                      {item.label}
+                    </NavLink>
+                  ))}
+                  
+                  {/* Mobile Download CV */}
+                  <button
+                    onClick={() => {
+                      downloadCV();
+                      setIsOpen(false);
+                    }}
+                    className="flex items-center justify-center w-full gap-2 px-4 py-3 mt-2 bg-white/5 text-white/80 text-sm font-medium rounded-xl hover:bg-white/10 transition-all duration-200 border border-white/10"
                   >
-                    {item.label}
-                  </NavLink>
-                ))}
-                {/* Mobile Download CV button */}
-                <button
-                  onClick={() => {
-                    downloadCV();
-                    setIsOpen(false);
-                  }}
-                  className="mobile-nav-item flex items-center justify-center w-full gap-2 px-4 py-3 bg-white/10 text-white text-sm font-semibold rounded-lg hover:bg-[#FF6B35]/20 transition-all duration-300"
-                >
-                  <Download size={18} />
-                  Download CV
-                </button>
-                <Link
-                  to="/hire-me"
-                  onClick={() => setIsOpen(false)}
-                  className="mobile-nav-item block w-full mt-2 px-4 py-3 bg-[#FF6B35] text-white text-sm font-semibold rounded-lg text-center hover:bg-[#FF8C5A] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#FF6B35]/30"
-                >
-                  Hire Me
-                </Link>
+                    <Download size={18} />
+                    Download CV
+                  </button>
+                  
+                  {/* Mobile Hire Me - gradient button */}
+                  <Link
+                    to="/hire-me"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center w-full gap-2 mt-2 px-4 py-3 bg-gradient-to-r from-[#FF6B6B] to-[#FF9F4A] text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#FF6B6B]/30"
+                  >
+                    <Sparkles size={18} />
+                    Hire Me
+                  </Link>
+                </div>
               </div>
             </div>
           )}
         </div>
       </nav>
 
-      {/* Mobile menu backdrop */}
+      {/* Backdrop overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden animate-fadeIn"
           onClick={() => setIsOpen(false)}
           style={{ top: navbarHeight }}
         />
       )}
+
+      <style>{`
+        @keyframes spin-once {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(180deg); }
+        }
+        .animate-spin-once {
+          animation: spin-once 0.3s ease-out;
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+      `}</style>
     </>
   );
 }
