@@ -63,7 +63,6 @@ export default function Home() {
       />
 
       <div className="max-w-5xl w-full relative z-10 text-center">
-
         {/* Profile Image */}
         <div className="mb-8 flex justify-center">
           <div
@@ -130,14 +129,47 @@ export default function Home() {
           integration.
         </p>
 
-        {/* Skill badges */}
+        {/* Skill badges - massively expanded with more databases */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
+          {/* Frontend & Core */}
           <SkillBadge icon="⚛️">React & Next.js</SkillBadge>
-          <SkillBadge icon="🔗">Smart Contracts</SkillBadge>
-          <SkillBadge icon="💚">Node.js</SkillBadge>
-          <SkillBadge icon="🗄️">PostgreSQL</SkillBadge>
-          <SkillBadge icon="☁️">AWS Cloud</SkillBadge>
+          <SkillBadge icon="📘">TypeScript</SkillBadge>
           <SkillBadge icon="🎨">Tailwind CSS</SkillBadge>
+          <SkillBadge icon="🎭">Redux</SkillBadge>
+          <SkillBadge icon="🌊">GraphQL</SkillBadge>
+
+          {/* Backend & Databases */}
+          <SkillBadge icon="💚">Node.js</SkillBadge>
+          <SkillBadge icon="🐍">Python</SkillBadge>
+          <SkillBadge icon="💪">Go</SkillBadge>
+          
+          {/* Databases - expanded */}
+          <SkillBadge icon="🗄️">PostgreSQL</SkillBadge>
+          <SkillBadge icon="🍃">MongoDB</SkillBadge>
+          <SkillBadge icon="⚡">Redis</SkillBadge>
+          <SkillBadge icon="🐬">MySQL</SkillBadge>
+          <SkillBadge icon="📦">DynamoDB</SkillBadge>
+          <SkillBadge icon="🔮">Cassandra</SkillBadge>
+          <SkillBadge icon="🔍">Elasticsearch</SkillBadge>
+
+          {/* DevOps & Cloud */}
+          <SkillBadge icon="🐳">Docker</SkillBadge>
+          <SkillBadge icon="☸️">Kubernetes</SkillBadge>
+          <SkillBadge icon="☁️">AWS Cloud</SkillBadge>
+          <SkillBadge icon="🏗️">Terraform</SkillBadge>
+          <SkillBadge icon="🔁">Jenkins</SkillBadge>
+          <SkillBadge icon="🔄">CI/CD Pipelines</SkillBadge>
+
+          {/* Monitoring & Infra */}
+          <SkillBadge icon="📊">Prometheus</SkillBadge>
+          <SkillBadge icon="📈">Grafana</SkillBadge>
+          <SkillBadge icon="🐧">Linux</SkillBadge>
+          <SkillBadge icon="📜">Bash</SkillBadge>
+
+          {/* Blockchain & Additional */}
+          <SkillBadge icon="🔗">Smart Contracts</SkillBadge>
+          <SkillBadge icon="📐">Web3</SkillBadge>
+          <SkillBadge icon="🛠️">Git</SkillBadge>
         </div>
 
         {/* CTA Buttons */}
