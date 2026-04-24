@@ -102,11 +102,11 @@ Portfolio: mordekai.dev
   }, []);
 
   const navItems = [
-    { label: 'Home', path: '/', end: true, icon: '🏠', color: '#FFB347' },
-    { label: 'About', path: '/about', icon: '🌟', color: '#FF6B9D' },
-    { label: 'Projects', path: '/projects', icon: '💎', color: '#6C5CE7' },
-    { label: 'Resume', path: '/resume', icon: '📜', color: '#00CEC9' },
-    { label: 'Contact', path: '/contact', icon: '💌', color: '#FD79A8' },
+    { label: 'Home', path: '/', end: true, icon: '🏠', color: '#2563EB' },
+    { label: 'About', path: '/about', icon: '🌟', color: '#3B82F6' },
+    { label: 'Projects', path: '/projects', icon: '💎', color: '#1D4ED8' },
+    { label: 'Resume', path: '/resume', icon: '📜', color: '#1E40AF' },
+    { label: 'Contact', path: '/contact', icon: '💌', color: '#2563EB' },
   ];
 
   return (
@@ -115,33 +115,29 @@ Portfolio: mordekai.dev
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
         :root {
-          --bg-deep: #0B0C10;
-          --bg-mid: #1F1B24;
-          --bg-card: #2A2438;
-          --accent-1: #FF6B6B;
-          --accent-2: #4ECDC4;
-          --accent-3: #FFE66D;
-          --accent-4: #A06AB4;
-          --accent-5: #FF9F4A;
-          --glass-white: rgba(255, 255, 255, 0.08);
-          --glass-border: rgba(255, 255, 255, 0.12);
-        }
-
-        @keyframes gradientFlow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          --blue-light: #EFF6FF;
+          --blue-bright: #3B82F6;
+          --blue-deep: #1E3A8A;
+          --white-pure: #FFFFFF;
+          --gray-soft: #F9FAFB;
+          --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+          --shadow-md: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
         }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(2deg); }
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          50% { transform: translateY(-15px) translateX(10px); }
+        }
+
+        @keyframes gentlePulse {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.05); }
         }
 
         @keyframes slideDown {
           from {
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateY(-15px);
           }
           to {
             opacity: 1;
@@ -154,136 +150,133 @@ Portfolio: mordekai.dev
           to { opacity: 1; }
         }
 
-        @keyframes pulseGlow {
-          0%, 100% { text-shadow: 0 0 4px rgba(255,107,107,0.5); }
-          50% { text-shadow: 0 0 12px rgba(255,107,107,0.8); }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
 
         .navbar {
-          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
-        .glass-nav {
-          background: rgba(11, 12, 16, 0.75);
-          backdrop-filter: blur(16px);
-          border-bottom: 1px solid var(--glass-border);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        .navbar-scrolled {
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+          box-shadow: var(--shadow-sm);
+        }
+
+        .navbar-transparent {
+          background: transparent;
         }
 
         .logo-gradient {
-          background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #FFE66D, #A06AB4);
-          background-size: 300% 300%;
+          background: linear-gradient(120deg, #1E3A8A, #3B82F6, #2563EB);
+          background-size: 200% auto;
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
-          animation: gradientFlow 6s ease infinite;
           font-weight: 800;
+          transition: all 0.3s;
         }
 
         .logo-sub {
-          background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,107,107,0.7));
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
+          color: #4B5563;
           font-weight: 500;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.08em;
         }
 
         .innovative-badge {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          background: rgba(255,107,107,0.15);
-          backdrop-filter: blur(4px);
-          padding: 2px 8px;
-          border-radius: 20px;
-          font-size: 0.65rem;
+          background: linear-gradient(120deg, #EFF6FF, #DBEAFE);
+          padding: 3px 10px;
+          border-radius: 40px;
+          font-size: 0.7rem;
           font-weight: 600;
-          color: #FF6B6B;
-          border: 1px solid rgba(255,107,107,0.3);
-          margin-left: 6px;
+          color: #1E40AF;
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          margin-left: 8px;
           white-space: nowrap;
+          transition: all 0.2s;
         }
 
-        .innovative-badge span {
-          animation: pulseGlow 2s infinite;
+        .innovative-badge:hover {
+          background: #DBEAFE;
+          transform: translateY(-1px);
         }
 
         .nav-link-item {
           position: relative;
           font-family: 'Inter', sans-serif;
           font-weight: 500;
-          transition: all 0.3s ease;
-          background: transparent;
-          border-radius: 12px;
+          transition: all 0.2s ease;
+          border-radius: 40px;
+          padding: 0.5rem 1rem;
+          color: #1F2937;
         }
 
-        .nav-link-item::before {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
-          transition: width 0.3s ease;
-          border-radius: 2px;
-        }
-
-        .nav-link-item:hover::before {
-          width: 70%;
+        .nav-link-item:hover {
+          background: rgba(59, 130, 246, 0.08);
+          color: #1E40AF;
         }
 
         .nav-link-item.active {
-          background: rgba(255, 107, 107, 0.15);
-          color: #FF6B6B;
-          box-shadow: 0 0 12px rgba(255, 107, 107, 0.2);
-        }
-
-        .nav-link-item.active::before {
-          width: 50%;
-          background: #FF6B6B;
+          background: rgba(59, 130, 246, 0.12);
+          color: #2563EB;
+          font-weight: 600;
         }
 
         .cta-button {
-          background: linear-gradient(135deg, #FF6B6B, #FF9F4A);
+          background: linear-gradient(105deg, #1E3A8A, #3B82F6);
           border: none;
-          transition: all 0.3s ease;
+          transition: all 0.25s ease;
+          box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
         }
 
         .cta-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+          box-shadow: 0 12px 20px -12px rgba(37, 99, 235, 0.4);
+          background: linear-gradient(105deg, #1E40AF, #2563EB);
         }
 
         .download-btn {
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
+          color: #4B5563;
         }
 
         .download-btn:hover {
-          color: #FF6B6B;
+          color: #2563EB;
           transform: scale(1.05);
         }
 
         .mobile-menu {
-          animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          background: rgba(31, 27, 36, 0.95);
-          backdrop-filter: blur(20px);
-          border: 1px solid var(--glass-border);
-          border-radius: 24px;
-          margin: 0 12px;
+          animation: slideDown 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(24px);
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          border-radius: 32px;
+          margin: 0 16px;
           overflow: hidden;
+          box-shadow: var(--shadow-md);
         }
 
         .mobile-link {
           transition: all 0.2s ease;
-          border-radius: 16px;
+          border-radius: 20px;
+          color: #1F2937;
         }
 
         .mobile-link.active {
-          background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.1));
-          color: #FF6B6B;
+          background: linear-gradient(105deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+          color: #2563EB;
+        }
+
+        .bg-shine {
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+          background-size: 200% 100%;
+          animation: shimmer 3s infinite;
         }
 
         @keyframes spinOnce {
@@ -300,104 +293,104 @@ Portfolio: mordekai.dev
 
       <nav
         ref={navbarRef}
-        className={`navbar fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled ? 'glass-nav' : 'bg-transparent'
+        className={`navbar fixed top-0 w-full z-50 transition-all duration-400 ${
+          scrolled ? 'navbar-scrolled' : 'navbar-transparent'
         }`}
       >
-        {/* Animated gradient background orbs */}
+        {/* Animated blue orbs for depth */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div
-            className="absolute w-[600px] h-[600px] rounded-full opacity-20"
+            className="absolute w-[500px] h-[500px] rounded-full"
             style={{
-              background: 'radial-gradient(circle, #FF6B6B, #4ECDC4, transparent)',
-              left: mousePosition.x * 0.03,
-              top: mousePosition.y * 0.03,
+              background: 'radial-gradient(circle, rgba(59,130,246,0.15), rgba(37,99,235,0.05), transparent)',
+              left: mousePosition.x * 0.02,
+              top: mousePosition.y * 0.02,
               transform: 'translate(-50%, -50%)',
-              filter: 'blur(80px)',
+              filter: 'blur(60px)',
               transition: 'all 0.2s ease-out',
             }}
           />
           <div
-            className="absolute w-72 h-72 rounded-full opacity-20"
+            className="absolute w-64 h-64 rounded-full"
             style={{
-              background: 'radial-gradient(circle, #FFE66D, #A06AB4, transparent)',
+              background: 'radial-gradient(circle, rgba(96,165,250,0.12), transparent)',
               right: '5%',
-              top: '10%',
-              animation: 'float 10s ease-in-out infinite',
-              filter: 'blur(60px)',
+              top: '5%',
+              animation: 'float 14s ease-in-out infinite',
+              filter: 'blur(50px)',
             }}
           />
           <div
-            className="absolute w-56 h-56 rounded-full opacity-15"
+            className="absolute w-48 h-48 rounded-full"
             style={{
-              background: 'radial-gradient(circle, #4ECDC4, #FF9F4A, transparent)',
-              left: '15%',
+              background: 'radial-gradient(circle, rgba(59,130,246,0.1), transparent)',
+              left: '10%',
               bottom: '0%',
-              animation: 'float 8s ease-in-out infinite reverse',
-              filter: 'blur(50px)',
+              animation: 'float 12s ease-in-out infinite reverse',
+              filter: 'blur(40px)',
             }}
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-16 sm:h-20">
-            {/* Logo with "Innovative Developer" badge */}
+            {/* Logo with modern badge */}
             <Link to="/" className="group relative">
               <div className="flex flex-col">
                 <div className="flex items-center flex-wrap gap-1">
-                  <span className="logo-gradient text-2xl sm:text-3xl font-black tracking-tighter">
+                  <span className="logo-gradient text-2xl sm:text-3xl font-black tracking-tight">
                     UKOBUKEYE
                   </span>
                   <div className="innovative-badge">
-                    <Zap size={12} />
-                    <span>Innovative Developer</span>
+                    <Zap size={12} strokeWidth={2} />
+                    <span>Innovative Dev</span>
                   </div>
                 </div>
-                <span className="logo-sub text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase transition-all duration-300 group-hover:tracking-[0.4em]">
+                <span className="logo-sub text-[11px] sm:text-xs font-medium tracking-[0.2em] transition-all duration-300 group-hover:tracking-[0.3em]">
                   Mordekai • Creative Technologist
                 </span>
               </div>
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#FF6B6B]/0 via-[#FFE66D]/20 to-[#4ECDC4]/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl -z-10" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/0 via-blue-400/10 to-blue-600/0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 blur-xl -z-10" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1 lg:gap-2">
+            {/* Desktop Navigation - clean and modern */}
+            <div className="hidden md:flex items-center gap-0.5 lg:gap-1 bg-white/40 backdrop-blur-sm rounded-full px-1 py-1 shadow-sm">
               {navItems.map((item) => (
                 <NavLink
                   key={item.path}
                   to={item.path}
                   end={item.end}
                   className={({ isActive }) =>
-                    `nav-link-item px-3 lg:px-4 py-2 text-sm lg:text-base font-medium text-white/80 hover:text-white transition-all duration-300 ${
+                    `nav-link-item text-sm lg:text-base font-medium transition-all duration-200 ${
                       isActive ? 'active' : ''
                     }`
                   }
                   style={({ isActive }) => ({
-                    color: isActive ? item.color : 'inherit',
+                    color: isActive ? item.color : '#374151',
                   })}
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-lg">{item.icon}</span>
+                    <span className="text-base">{item.icon}</span>
                     {item.label}
                   </span>
                 </NavLink>
               ))}
             </div>
 
-            {/* Desktop Actions */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* Desktop Actions - modern CTA */}
+            <div className="hidden md:flex items-center gap-3">
               <div className="relative">
                 <button
                   onClick={downloadCV}
                   onMouseEnter={() => setDownloadHovered(true)}
                   onMouseLeave={() => setDownloadHovered(false)}
-                  className="download-btn p-2.5 text-white/70 hover:text-[#FF6B6B] transition-all duration-300 rounded-full hover:bg-white/5"
+                  className="download-btn p-2.5 text-gray-600 hover:text-blue-600 transition-all duration-200 rounded-full hover:bg-blue-50"
                   aria-label="Download CV"
                 >
-                  <Download size={20} strokeWidth={1.8} />
+                  <Download size={20} strokeWidth={1.6} />
                 </button>
                 {downloadHovered && (
-                  <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-[#1F1B24] text-white text-xs rounded-full whitespace-nowrap shadow-lg border border-[#FF6B6B]/30 backdrop-blur-sm">
+                  <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-white text-gray-800 text-xs rounded-full whitespace-nowrap shadow-lg border border-blue-200 font-medium">
                     Download Portfolio
                   </span>
                 )}
@@ -407,7 +400,7 @@ Portfolio: mordekai.dev
                 to="/hire-me"
                 onMouseEnter={() => setHireHovered(true)}
                 onMouseLeave={() => setHireHovered(false)}
-                className="cta-button relative px-6 py-2.5 rounded-full text-white text-sm font-semibold overflow-hidden group flex items-center gap-2"
+                className="cta-button relative px-5 py-2.5 rounded-full text-white text-sm font-semibold overflow-hidden group flex items-center gap-2 shadow-md"
               >
                 <Sparkles size={16} className="group-hover:rotate-12 transition-transform duration-300" />
                 <span>Hire Me</span>
@@ -417,14 +410,14 @@ Portfolio: mordekai.dev
                     hireHovered ? 'translate-x-1 opacity-100' : 'opacity-70'
                   }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                <div className="absolute inset-0 bg-shine opacity-30 group-hover:opacity-50 transition-opacity" />
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden relative z-20 p-2 text-white hover:text-[#FF6B6B] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B6B] rounded-xl bg-white/5 backdrop-blur-sm"
+              className="md:hidden relative z-20 p-2 text-gray-700 hover:text-blue-600 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl bg-white/70 backdrop-blur-sm shadow-sm"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -435,11 +428,11 @@ Portfolio: mordekai.dev
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - sleek dropdown */}
           {isOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 pt-2 pb-4 px-2">
-              <div className="mobile-menu p-2">
-                <div className="space-y-1">
+            <div className="md:hidden absolute top-full left-0 right-0 pt-2 pb-4 px-3">
+              <div className="mobile-menu p-3">
+                <div className="space-y-1.5">
                   {navItems.map((item) => (
                     <NavLink
                       key={item.path}
@@ -450,11 +443,11 @@ Portfolio: mordekai.dev
                         `mobile-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
                           isActive
                             ? 'active'
-                            : 'text-white/70 hover:text-white hover:bg-white/5'
+                            : 'text-gray-700 hover:bg-blue-50 hover:text-blue-700'
                         }`
                       }
                       style={({ isActive }) => ({
-                        color: isActive ? item.color : 'inherit',
+                        color: isActive ? item.color : undefined,
                       })}
                     >
                       <span className="text-xl">{item.icon}</span>
@@ -467,7 +460,7 @@ Portfolio: mordekai.dev
                       downloadCV();
                       setIsOpen(false);
                     }}
-                    className="flex items-center justify-center w-full gap-2 px-4 py-3 mt-2 bg-white/5 text-white/80 text-sm font-medium rounded-xl hover:bg-white/10 transition-all duration-200 border border-white/10"
+                    className="flex items-center justify-center w-full gap-2 px-4 py-3 mt-2 bg-gray-50 text-gray-700 text-sm font-medium rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 border border-gray-100"
                   >
                     <Download size={18} />
                     Download CV
@@ -476,7 +469,7 @@ Portfolio: mordekai.dev
                   <Link
                     to="/hire-me"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center w-full gap-2 mt-2 px-4 py-3 bg-gradient-to-r from-[#FF6B6B] to-[#FF9F4A] text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#FF6B6B]/30"
+                    className="flex items-center justify-center w-full gap-2 mt-2 px-4 py-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-200"
                   >
                     <Sparkles size={18} />
                     Hire Me
@@ -490,7 +483,7 @@ Portfolio: mordekai.dev
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden animate-fadeIn"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden animate-fadeIn"
           onClick={() => setIsOpen(false)}
           style={{ top: navbarHeight }}
         />
