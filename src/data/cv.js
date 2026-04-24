@@ -2,11 +2,15 @@ export const cvData = {
   name: "UKOBUKEYE Mordekai",
   profile: "Innovative and motivated software developer with strong experience in web development, AI, IoT, and blockchain technologies. Skilled at creating interactive web applications and smart solutions for agriculture, energy, waste management, and marketplaces. Strong problem-solving, teamwork, and project management skills.",
   skills: {
-    frontend: "React, Redux, TailwindCSS, Material-UI, SCSS",
-    backend: "Node.js, Express, Python",
-    database: "MongoDB, PostgreSQL",
-    other: "Smart Contracts, IoT, AI, Chart.js, Recharts, Leaflet, Elasticsearch, Auth0",
-    tools: "Git, GitHub, VS Code"
+    frontend: "React, Redux, TailwindCSS, Material-UI, SCSS, TypeScript, Next.js",
+    backend: "Node.js, Express, Python, FastAPI, Django",
+    database: "MongoDB, PostgreSQL, Redis, SQLite",
+    other: "Smart Contracts, IoT, AI, Chart.js, Recharts, Leaflet, Elasticsearch, Auth0, GraphQL, REST APIs",
+    tools: "Git, GitHub, VS Code, Postman, Jest, Cypress",
+    cloud: "AWS (EC2, S3), Google Cloud Platform, Firebase",
+    devops: "Docker, GitHub Actions, CI/CD Pipelines, Kubernetes (basics)",
+    testing: "Unit Testing (Jest, PyTest), Integration Testing, React Testing Library",
+    softSkills: "Leadership, Agile/Scrum, Critical Thinking, Time Management, Remote Collaboration"
   },
   education: "Upper Sixth (Senior 6) – Saint Laurent Gaseke TSS",
   projects: [
@@ -27,7 +31,7 @@ export const cvData = {
   references: "Available upon request"
 };
 
-// Ibi na byo gukoresha mu gukurura dosiye (niba ushaka)
+// Updated cvText to include all new skill categories
 export const cvText = `UKOBUKEYE Mordekai
 
 Profile
@@ -39,6 +43,10 @@ Backend: ${cvData.skills.backend}
 Database: ${cvData.skills.database}
 Other Technologies: ${cvData.skills.other}
 Tools: ${cvData.skills.tools}
+Cloud: ${cvData.skills.cloud}
+DevOps: ${cvData.skills.devops}
+Testing: ${cvData.skills.testing}
+Soft Skills: ${cvData.skills.softSkills}
 
 Education
 ${cvData.education}
